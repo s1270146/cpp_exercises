@@ -13,7 +13,7 @@ int main()
     char* test_str = intToStr(num);
     cout << "intToStr(" << num << ") -> " << test_str << endl;
 
-    cout << "Input string of converting to a c-string an Integer <- " ;
+    cout << "Input string of converting to a c-string an Integer <- ";
     cin >> cstr;
     //cout << cstr;
     int test_num = strToInt(cstr);

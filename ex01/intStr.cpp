@@ -29,7 +29,7 @@ char *intToStr(int num)
     //数字から文字へ
     for(int i=1;i<=cnt;i++)
     {
-        str[i-1] = n_num / p + 48;//48で丁度良い
+        str[i-1] = n_num / p + '0';//48で丁度良い
         n_num = n_num % p;
         p /= 10;
     }
@@ -48,12 +48,12 @@ int strToInt(char* str)
     {
         if(i==0)
         {
-            num = str[i] - 48;
+            num = str[i] - '0';
         }
         else 
         {
             num *= 10;
-            num += str[i] -48;
+            num += str[i] - '0';
         }
         i++;
     }

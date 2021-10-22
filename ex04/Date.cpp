@@ -10,7 +10,7 @@ void Date::set(const int m, const int d, const int y)
 
 void Date::print() const
 {
-    std::cout << "month : " << month << ", day : " << day << ", year : " << year << std::endl;
+    std::cout << "month : " << get_month() << ", day : " << get_day() << ", year : " << get_year() << std::endl;
 }
 
 int Date::get_month() const

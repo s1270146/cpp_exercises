@@ -60,5 +60,41 @@ int main(void) {
         stack4.pop();
     }
 
+    // Move
+    ArrayStack stack7 = std::move(stack5);
+
+    stack6 = std::move(stack2);
+    std::cout << std::endl;
+    while(!stack5.empty())
+    {
+        std::cout << "stack5.top() >> " << stack5.top() << std::endl;
+        std::cout << "stack5.pop()" << std::endl;
+        stack5.pop();
+    }
+
+    std::cout << std::endl;
+    while(!stack7.empty())
+    {
+        std::cout << "stack7.top() >> " << stack7.top() << std::endl;
+        std::cout << "stack7.pop()" << std::endl;
+        stack7.pop();
+    }
+
+    std::cout << std::endl;
+    while(!stack6.empty())
+    {
+        std::cout << "stack6.top() >> " << stack6.top() << std::endl;
+        std::cout << "stack6.pop()" << std::endl;
+        stack6.pop();
+    }
+
+    std::cout << std::endl;
+    while(!stack2.empty())
+    {
+        std::cout << "stack2.top() >> " << stack2.top() << std::endl;
+        std::cout << "stack2.pop()" << std::endl;
+        stack2.pop();
+    }
+
     return 0;
 }

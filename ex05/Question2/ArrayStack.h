@@ -38,9 +38,10 @@ public:
         _items = nullptr;
     }
 
-    // Copy Constructors:
+    // Copy Constructor
     ArrayStack(const ArrayStack& another_stack1)
     {
+        std::cout << "Copy Constructor" << std::endl;
         _num_items = another_stack1._num_items;
         _allocated_size = another_stack1._allocated_size;
         _items = new double[_allocated_size];
@@ -53,6 +54,8 @@ public:
     // Assignment Operator
     ArrayStack& operator= (const ArrayStack& another_stack2)
     {
+        if(this == &another_stack2) return *this;
+        std::cout << "Assignment Operator" << std:: endl;
         _num_items = another_stack2._num_items;
         _allocated_size = another_stack2._allocated_size;
         delete _items;

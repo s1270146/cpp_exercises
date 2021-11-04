@@ -38,9 +38,21 @@ public:
         _items = nullptr;
     }
 
+    explicit ArrayStack(int allocated_size) 
+    /* COMPLETE ... init _num_items to 0, 
+     * pre-allocate memory for an array of size allocated_size
+     * and make _items point to it */
+    {
+        _num_items = 0;
+        _allocated_size = allocated_size;
+        _items = new double[allocated_size];
+    }
+
+
     // Copy Constructor
     ArrayStack(const ArrayStack& another_stack1)
     {
+        std::cout << "Copy Constructor" << std::endl;
         _num_items = another_stack1._num_items;
         _allocated_size = another_stack1._allocated_size;
         _items = new double[_allocated_size];
@@ -53,6 +65,8 @@ public:
     // Assignment Operator
     ArrayStack& operator= (const ArrayStack& another_stack2)
     {
+        if(this == &another_stack2) return *this;
+        std::cout << "Assignment Operator" << std::endl;
         _num_items = another_stack2._num_items;
         _allocated_size = another_stack2._allocated_size;
         delete _items;
@@ -65,27 +79,31 @@ public:
     }
 
     // Move constructor
-    ArrayStack(ArrayStack&& move_stack1)
+    /*ArrayStack(ArrayStack&& move_stack1) :_num_items{move_stack1._num_items}, _allocated_size{move_stack1._allocatedsize}
     {
-        _num_items = move_stack1._num_items;
-        _allocated_size = move_stack1._allocated_size;
-        _items = new double[_allocated_size];
-        for(int i=0;i<move_stack1._num_items;i++)
+        move_stack1._num_items = 0;
+        move_stack1._allocated_size = 0;
+        move_stack1._items = nullptr;
+    }*/
+
+    // Move constructor
+    ArrayStack& operator= (ArrayStack&& move_stack2)
+    {
+        if(this == &move_stack2) return *this;
+        std::cout << "Move Constructor" << std::endl;
+        _items = new double[move_stack2._allocated_size];
+        for(int i=0; i <move_stack2._num_items;i++)
         {
-            _items[i] = move_stack1._items[i];
+            _items[i] = move_stack2._items[i];
         }
+        _num_items = move_stack2._num_items;
+        _allocated_size = move_stack2._allocated_size;
+        move_stack2._items = nullptr;
+        move_stack2._num_items = 0;
+        move_stack2._allocated_size = 0;
+        return *this;
     }
-
-    explicit ArrayStack(int allocated_size) 
-    /* COMPLETE ... init _num_items to 0, 
-     * pre-allocate memory for an array of size allocated_size
-     * and make _items point to it */
-    {
-        _num_items = 0;
-        _allocated_size = allocated_size;
-        _items = new double[allocated_size];
-    }
-
+    
     // Destructor:
     ~ArrayStack() {
         // COMPLETE

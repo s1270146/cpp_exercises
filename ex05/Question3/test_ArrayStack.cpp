@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ArrayStack.h"
+#include <utility>
 
 int main(void) {
     
@@ -62,8 +63,8 @@ int main(void) {
 
     // Move
     ArrayStack stack7 = std::move(stack5);
-
     stack6 = std::move(stack2);
+    //stack6 = std::move(stack2);
     std::cout << std::endl;
     while(!stack5.empty())
     {

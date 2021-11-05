@@ -5,18 +5,14 @@
 class Circle : public Shape2D
 {
 private:
-    float _width, _height;
-    Point2D *p;
+    Point2D *p = new Point2D(0, 0);
+    float _radius;
+
 public:
-    Circle(Point2D left_corner, float r, float height)
-    {
-        p->setX(left_corner.getX());
-        p->setY(left_corner.getX());
-        _width = width;
-        _height = height;
-    }
-    float compute_area() const;
-    Shape2D *create() const;
-    Shape2D *clone() const;
+    Circle(Point2D center, float radius);
+    ~Circle();
     std::string get_name() const;
+    float compute_area() const;
+    Shape2D* create() const;
+    Shape2D* clone() const;
 };

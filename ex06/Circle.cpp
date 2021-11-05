@@ -1,27 +1,39 @@
 #include "Circle.h"
-#include "Shape2D.h"
-#include <iostream>
-#include <string>
 
-std::string ::get_name() const
+Circle::Circle(Point2D center, float radius) : Shape2D()
+{
+    *p = center;
+    _radius = radius;
+}
+
+Circle::~Circle()
+{
+
+}
+
+std::string Circle::get_name() const
 {
     return "circle";
 }
 
-float Rectangle::compute_area() const
+float Circle::compute_area() const
 {
-    return _width * _height;
+    return _radius * _radius * 3.14;
 }
 
-Shape2D* Rectangle::create() const
+Shape2D *Circle::create() const
 {
-    Shape2D *s;
-    return s;
+    Point2D *p = new Point2D(0,0);
+    Circle *c = new Circle(*p,0);
+    return c;
 }
 
-Shape2D* Rectangle::clone() const
+Shape2D *Circle::clone() const
 {
-    Shape2D *s;
-    return s;
-}
+    Point2D *p = new Point2D(0,0);
+    Circle *c = new Circle(*p , 0);
+    c->p = this->p;
+    c->_radius = this->_radius;
 
+    return c;
+}

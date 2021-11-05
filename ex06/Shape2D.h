@@ -1,38 +1,49 @@
 #pragma once
-#include <string>
+#include <iostream>
 
 class Shape2D
 {
 private:
+    /* data */
 
 public:
-    Shape2D(/* args */){};
-    ~Shape2D(){};
-
+    Shape2D(/* args */)
+    {
+        //std::cout << "Shape2D Constructor" << std::endl;
+    }
+    Shape2D(const Shape2D& another_s)
+    {
+        
+    }
+    ~Shape2D()
+    {
+        //std::cout << "Shape2D Destructor" << std::endl;
+    }
     virtual std::string get_name() const = 0;
     virtual float compute_area() const = 0;
-    virtual Shape2D *create() const = 0;
-    virtual Shape2D *clone() const = 0;
+    virtual Shape2D* create() const = 0;
+    virtual Shape2D* clone() const = 0;
 };
 
 class Point2D
 {
 private:
-    float x, y;
+    int x;
+    int y;
+
 public:
-    void setX(float _x)
+    Point2D(int _x , int _y )
     {
         x = _x;
+        y = _y;
     }
-    void setY(float _y)
-    {
-        x = _y;
-    }
-    float getX()
+    ~Point2D() {}
+
+    int getX()
     {
         return x;
     }
-    float getY()
+    int getY()
     {
         return y;
     }

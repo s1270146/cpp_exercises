@@ -6,14 +6,14 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
     Stack *st;
     int i = 0;
     int num;
     int max = 0;
 
-    string file_name = "data.txt";
+    string file_name = argv[1];
 
     ifstream fin(file_name);
     while (!fin.eof())
@@ -31,21 +31,22 @@ int main()
         {
             getline(fin, line);
             st->push(line);
-            if(max<line.length())max = line.length();
+            if (max < line.length())
+                max = line.length();
         }
         i++;
     }
-    for(int i=0;i<max+1;i++)
+    for (int i = 0; i < max + 1; i++)
     {
         cout << "-";
     }
     cout << endl;
-    for(int i=0;i<num;i++)
+    for (int i = 0; i < num; i++)
     {
         cout << st->top() << endl;
         st->pop();
     }
-    for(int i=0;i<max+1;i++)
+    for (int i = 0; i < max + 1; i++)
     {
         cout << "-";
     }

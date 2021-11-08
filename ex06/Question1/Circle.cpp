@@ -31,9 +31,7 @@ Shape2D *Circle::create() const
 Shape2D *Circle::clone() const
 {
     Point2D *p = new Point2D(0,0);
-    Circle *c = new Circle(*p , 0);
-    c->p = this->p;
-    c->_radius = this->_radius;
-
+    Circle *c = new Circle(*p,0);
+    *c = *this;
     return c;
 }

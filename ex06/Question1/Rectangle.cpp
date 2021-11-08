@@ -45,10 +45,8 @@ Shape2D *Rectangle::create() const
 Shape2D *Rectangle::clone() const
 {
     Point2D *p = new Point2D(0, 0);
-    Rectangle *r = new Rectangle(*p,0,0);
-    r->_height = this->_height;
-    r->_width = this->_width;
-    r->p = this->p;
+    Rectangle *r = new Rectangle(*p, 0, 0);
+    *r = *this;
     
     return r;
 }

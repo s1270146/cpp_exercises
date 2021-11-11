@@ -135,9 +135,24 @@ Mat4x4 &Mat4x4::operator-() const
     {
         for (int j = 0; j < 4; j++)
         {
-            mt.mat[i][j] = -mat[i][j];
+            if (mat[i][j] == 0)
+                mt.mat[i][j] = mat[i][j];
+            else
+                mt.mat[i][j] = -mat[i][j];
         }
     }
     return mt;
 }
 
+std::ostream &operator<<(std::ostream &os, const Mat4x4 &other)
+{
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            os << other.mat[i][j] << " ";
+        }
+        os << std::endl;
+    }
+    return os;
+}

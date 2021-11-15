@@ -24,11 +24,10 @@ public:
     {
         fclose(log_file);
     }
-    int fputs(const char *write_con)
+    void fputs(const char *write_con)
     {
         const int let = std::fputs(write_con, log_file);
         //std::cout << "check" << std::endl;
-        return let;
     }
 };
 void doSomeComputation()
@@ -46,17 +45,25 @@ void example()
     const char *file_name = "logfile.txt";
     LogFile *l = new LogFile(file_name);
 
-    if(l->fputs("log - 1") < 0) doSomeComputation();
+    try
+    {
+        l->fputs("log - 1");
+        doSomeComputation();
+
+        l->fputs("log - 2");
+    } 
+    catch(runtime_error e)
+    {
+        std::cerr << "some_exception: " << e.what() << std::endl;
+    }
+    catch(...)
+    {
+        std::cerr << "unknown exeption" << std::endl;
+    }
     
     // Call a function that performs some computation and may throw
     // an exception
-    //l->doSomeComputation();
-
-    if(l->fputs("log - 2") < 0) doSomeComputation();
-    //void doSomeComputation();
-
     cout << "closing logfile" << endl;
-    delete l;
 }
 
 int main(void)

@@ -79,17 +79,25 @@ public:
     }
 
     // Move constructor
-    /*ArrayStack(ArrayStack&& move_stack1) :_num_items{move_stack1._num_items}, _allocated_size{move_stack1._allocatedsize}
+    ArrayStack(ArrayStack&& move_stack1)
     {
-        move_stack1._num_items = 0;
-        move_stack1._allocated_size = 0;
+        std::cout << "Move Constructor" << std::endl;
+        _items = new double[move_stack1._allocated_size];
+        for (int i = 0; i < move_stack1._num_items; i++)
+        {
+            /* code */
+            _items[i] = move_stack1._items[i];
+        }
         move_stack1._items = nullptr;
-    }*/
+        _num_items = move_stack1._num_items;
+        move_stack1._num_items = 0;
+        _allocated_size = move_stack1._allocated_size;
+        move_stack1._allocated_size = 0;
+    }
 
     // Move constructor
     ArrayStack& operator= (ArrayStack&& move_stack2)
     {
-        if(this == &move_stack2) return *this;
         std::cout << "Move Constructor" << std::endl;
         _items = new double[move_stack2._allocated_size];
         for(int i=0; i <move_stack2._num_items;i++)

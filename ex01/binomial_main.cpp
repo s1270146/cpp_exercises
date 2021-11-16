@@ -1,5 +1,5 @@
 #include <iostream>
-#include "binomial.h"
+#include "new_binomial.h"
 #include <iomanip>
 
 using namespace std;

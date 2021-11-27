@@ -27,26 +27,22 @@ struct Compare
 std::list<Point> find_k_closest(int k, std::list<Point> ls)
 {
   std::priority_queue<Point, std::vector<Point>, Compare > q;
-  for (int i = 0; i < k; i++)
+  int s = ls.size();
+  for (int i = 0; i < s; i++)
   {
     q.push(ls.front());
     ls.pop_front();
   }
   std::list<Point> _ls;
-  int i = 1;
-  _ls.push_back(q.top());
-  q.pop();
-  while (i < k)
+  for(int i=0;i < s-k ;i++)
   {
-    if (std::sqrt((_ls.front().x * _ls.front().x) + (_ls.front().y * _ls.front().y) + (_ls.front().z * _ls.front().z)) != std::sqrt((q.top().x * q.top().x) + (q.top().y * q.top().y) + (q.top().z * q.top().z)))
-    {
-      _ls.pop_back();
-      _ls.push_back(q.top()); 
-    }
-    else _ls.push_front(q.top());
-    i++;
     q.pop();
   }
-  
+  for(int i=0;i<k;i++)
+  {
+    _ls.push_front(q.top());
+    q.pop();
+  }
+
   return _ls;
 }

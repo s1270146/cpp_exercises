@@ -8,13 +8,12 @@ namespace PL4
     void
     sort(FwdIt begin, FwdIt end)
     {
-        FwdIt cnt;
         while (begin < end)
         {
             auto _b = begin;
             while ((_b + 1) < end)
             {
-                if (*_b > *(_b + 1))
+                if (*(_b + 1) < *_b)
                 {
                     std::swap(*_b, *(_b + 1));
                 }
